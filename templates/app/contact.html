@@ -1,0 +1,65 @@
+{% extends "app/base.html" %}
+{% load static %}
+    {% block title %}
+    Contact
+    {% endblock title %}
+
+    
+      {% block content %}
+      <h3>Welcome to <strong>DB City</strong></h3>
+      <h1>We're having Best Collections</h1>
+      <a href="#about" class="btn-get-started scrollto">Get Best Product</a>
+      {% endblock content %}
+
+      {% block body %}
+      <nav class="navbar bg-body-tertiary ">
+        <div class="container-fluid ">
+          {% comment %} <span class="navbar-brand mb-0 h1 text-center">Contact Us</span> {% endcomment %}
+          <h1 class="text-center">Contact Us</h1>
+        </div>
+      </nav>    
+    <div class="container mt-2">
+        {% for message in messages %}
+
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            <strong>{{message}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+        </div>
+        {% endfor %}
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form action="/contact/" method="post">
+                {% csrf_token %}
+                <h1 class="text-dark fs-2"> Contact Form</h1>
+                <label for="name">Name</label>
+                <div class="form-group">
+                    <input type="text" class="form-control p-2" name="name" id="name" required>
+                </div>
+                <label for="email" class="p-2">Email</label>
+                <div class="form-group">
+                    <input type="email" class="form-control p-2" name="email" id="email" required>
+                </div>
+                <label for="desc">Description</label>
+                <div class="form-group">
+                    <input type="text" class="form-control p-2" name="desc" id="desc" required>
+                </div>
+                <label for="Phone">Phone</label>
+                <div class="form-group">
+                    <input type="number" class="form-control p-2" name="phone" id="phone" required>
+                </div>
+                <button type="submit" class="btn btn-primary" >Submit</button>
+                <br>
+                <br>        
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+   </div>
+
+      
+
+
+      {% endblock body %}
+
